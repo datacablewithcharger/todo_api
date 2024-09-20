@@ -1,0 +1,157 @@
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.editor-container {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    width: 80%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    background-color: #f1f1f1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.complete-check {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.complete-check label {
+    font-size: 1rem;
+    color: #555;
+    cursor: pointer;
+}
+
+.complete-check input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+
+.submit-btn {
+    background-color: #007BFF;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+
+.editor-content {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-grow: 1;
+    overflow: auto;
+}
+
+
+.title-area {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    outline: none;
+    width: 100%;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    color: #333;
+    border-bottom: 1px solid transparent;
+    position: relative;
+}
+
+.title-area:before {
+    content: "Enter Title...";
+    color: #999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    padding: 5px;
+    font-size: 2.5rem;
+}
+
+.title-area.has-content:before {
+    display: none;
+}
+
+
+.description-area {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    flex-grow: 1;
+    width: 100%;
+    outline: none;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: transparent;
+    color: #555;
+    position: relative;
+}
+
+.description-area:before {
+    content: "Enter Description...";
+    color: #999;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    padding: 5px;
+    font-size: 1.2rem;
+}
+
+.description-area.has-content:before {
+    display: none;
+}
+
+
+@media (max-width: 768px) {
+    .editor-container {
+        width: 95%;
+        height: 90%;
+    }
+
+    .title-area {
+        font-size: 2rem;
+    }
+
+    .description-area {
+        font-size: 1rem;
+    }
+
+    .submit-btn {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+}

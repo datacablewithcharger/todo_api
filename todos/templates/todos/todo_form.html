@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'add_form.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>{% if todo %}Update{% else %}Create{% endif %} Todo Task</title>
+</head>
+<body>
+    <div class="editor-container">
+        <header>
+            <div class="complete-check">
+                <label for="completed">
+                    <input type="checkbox" id="completed" name="completed" {% if todo and todo.completed %}checked{% endif %}>
+                    Task Completed
+                </label>
+            </div>
+            <button type="submit" class="submit-btn">{% if todo %}Update{% else %}Submit{% endif %}</button>
+        </header>
+
+        <div class="editor-content">
+            <div contenteditable="true" class="title-area" id="title">{% if todo %}{{ todo.title }}{% endif %}</div>
+            <div contenteditable="true" class="description-area" id="description">{% if todo %}{{ todo.description }}{% endif %}</div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.submit-btn').addEventListener('click', function(event) {
+            const title = document.getElementById('title').innerText.trim();
+            const description = document.getElementById('description').innerText.trim();
+            
+            // Validation: Check if title and description are not empty
+            if (!title || !description) {
+                alert('Both title and description are required.');
+                return; // Prevent form submission if validation fails
+            }
+
+            const completed = document.getElementById('completed').checked;
+
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = "{% if todo %}{% url 'api_update_todo' todo.id %}{% else %}{% url 'api_create_todo' %}{% endif %}";
+            
+            const csrfInput = document.createElement('input');
+            csrfInput.type = 'hidden';
+            csrfInput.name = 'csrfmiddlewaretoken';
+            csrfInput.value = '{{ csrf_token }}';
+            form.appendChild(csrfInput);
+
+            const titleInput = document.createElement('input');
+            titleInput.type = 'hidden';
+            titleInput.name = 'title';
+            titleInput.value = title;
+            form.appendChild(titleInput);
+
+            const descriptionInput = document.createElement('input');
+            descriptionInput.type = 'hidden';
+            descriptionInput.name = 'description';
+            descriptionInput.value = description;
+            form.appendChild(descriptionInput);
+
+            const completedInput = document.createElement('input');
+            completedInput.type = 'hidden';
+            completedInput.name = 'completed';
+            completedInput.value = completed ? 'on' : 'off';
+            form.appendChild(completedInput);
+
+            document.body.appendChild(form);
+            form.submit();
+        });
+
+        
+        function checkForContent() {
+            const titleArea = document.getElementById('title');
+            const descriptionArea = document.getElementById('description');
+
+            if (titleArea.innerText.trim() !== '') {
+                titleArea.classList.add('has-content');
+            }
+
+            if (descriptionArea.innerText.trim() !== '') {
+                descriptionArea.classList.add('has-content');
+            }
+
+            titleArea.addEventListener('input', function() {
+                if (this.innerText.trim() !== '') {
+                    this.classList.add('has-content');
+                } else {
+                    this.classList.remove('has-content');
+                }
+            });
+
+            descriptionArea.addEventListener('input', function() {
+                if (this.innerText.trim() !== '') {
+                    this.classList.add('has-content');
+                } else {
+                    this.classList.remove('has-content');
+                }
+            });
+        }
+
+      
+        window.onload = checkForContent;
+    </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 80%;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: relative; 
+}
+
+.add-task {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    background-color: #ff6b6b;
+    color: #fff;
+    border: none;
+    
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight:600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    top: 32px; 
+    right: 50px; 
+}
+
+.add-task i {
+    margin-right: 8px; 
+}
+
+.add-task:hover {
+    background-color: #e55a5a;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.todo-list {
+    margin-top: 60px; 
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    gap: 20px;
+    text-align: left; 
+}
+
+.todo-card {
+    background-color: #dfdfdfaf;
+    padding: 20px;
+    border-radius: 40px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    justify-content: space-between;
+    height: 100%; 
+    cursor: pointer;
+}
+
+.todo-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px); 
+}
+
+.task-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.task-details {
+    flex-grow: 1;
+}
+
+.description {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 4.5em;
+    line-height: 1.5em;
+    color: #666;
+}
+
+.task-date {
+    font-size: 0.85rem;
+    color: #999;
+    margin-top: 5px;
+    display: block;
+}
+a {
+  text-decoration: none;
+}
+.task-status {
+    font-weight: 500;
+    margin-top: 10px;
+    color: black;
+}
+
+.task-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+.update-btn, .delete-btn {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.update-btn {
+    background-color: #4CAF50;
+}
+
+.update-btn:hover {
+    background-color: #43A047;
+}
+
+.delete-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #f44336;
+    font-size: 0.6rem;
+    padding: 0;
+    transition: color 0.3s ease-in-out;
+}
+
+.delete-btn:hover {
+    color: #e53935;
+}
+
+.delete-icon {
+    font-size: 1.4rem;
+}
+
+@media (max-width: 500px) {
+    .task-title {
+        font-size: 1.3rem;
+    }
+
+    .todo-card {
+        padding: 15px;
+    }
+
+    .add-task {
+        width: 100%;
+    }
+}
