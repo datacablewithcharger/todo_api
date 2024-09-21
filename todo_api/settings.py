@@ -71,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'todo_api.wsgi.app'
+WSGI_APPLICATION = 'todo_api.wsgi.application'
 
 
 

@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('', views.todo_list_view, name='todo_list'),  
     path('api/todos/', views.api_create_todo, name='api_create_todo'),  
@@ -9,3 +9,4 @@ urlpatterns = [
     path('create/', views.todo_form, name='create_todo_form'),  
     path('update/<int:id>/', views.todo_form, name='update_todo_form'), 
 ]
+urlpatterns += staticfiles_urlpatterns()
