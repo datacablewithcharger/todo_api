@@ -15,8 +15,8 @@ This is a simple Todo application built using Django. It includes basic CRUD ope
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/Todo-App-Assignment.git
-   cd Todo-App-Assignment
+   git clone https://github.com/your-username/todo_api.git
+   cd todo_api
    ```
 
 2. **Create and activate a virtual environment (optional but recommended):**
