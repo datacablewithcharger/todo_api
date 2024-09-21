@@ -189,4 +189,7 @@ a {
         grid-template-columns: 1fr; 
     }
 
+    h1 {
+        font-size: 1.7rem;
+    }
 }
