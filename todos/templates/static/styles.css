@@ -184,9 +184,15 @@ a {
         top: 0;
         margin-bottom: 20px;
     }
+    
 
     .todo-list {
         grid-template-columns: 1fr; 
+    }
+
+    .task-details {
+        padding-top: 10px;
+       
     }
 
     h1 {
